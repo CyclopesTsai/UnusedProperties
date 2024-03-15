@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class UnusedProperties
 {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger("UUS");
     private static final String[] DIVIDER = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
     private static final String KEY_PATH = "C:/Users/cyclo/Desktop/key.properties";

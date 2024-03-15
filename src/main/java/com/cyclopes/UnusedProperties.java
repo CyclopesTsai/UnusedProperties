@@ -16,7 +16,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class UnusedSearch
+public class UnusedProperties
 {
     private static final Logger logger = LogManager.getLogger();
     private static final String[] DIVIDER = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};

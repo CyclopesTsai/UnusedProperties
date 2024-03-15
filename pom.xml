@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cyclopes</groupId>
-    <artifactId>UnusedSearch</artifactId>
+    <artifactId>UnusedProperties</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>UnusedSearch</name>
+    <name>UnusedProperties</name>
     <url>https://maven.apache.org</url>
 
     <properties>

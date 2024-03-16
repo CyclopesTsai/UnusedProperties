@@ -23,7 +23,7 @@ public class UnusedProperties
     private static final Map<String, String> KEY_MAP = new HashMap<>();
     private static List<String> SEARCH_TARGET_EXTENSION;
 
-    private static Map<String, String> USED_KEY_MAP = new HashMap<>();
+    private static final Map<String, String> USED_KEY_MAP = new HashMap<>();
     private static String OUTPUT_USED_PATH = "";
     private static String OUTPUT_UNUSED_PATH = "";
 

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.util.FileUtils;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -19,6 +20,7 @@ public class UnusedProperties
 {
     private static final Logger logger = LogManager.getLogger("UUS");
     private static final String[] DIVIDER = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    private static final String PROP_FILE_NAME = "application.properties";
 
     private static final Map<String, String> KEY_MAP = new HashMap<>();
     private static List<String> SEARCH_TARGET_EXTENSION;
@@ -29,13 +31,18 @@ public class UnusedProperties
 
     public static void main(String[] args) throws Exception
     {
-        Properties prop = new Properties();
-        prop.load(UnusedProperties.class.getClassLoader().getResourceAsStream("application.properties"));
-        String keyPath = prop.getProperty("key.path", "");
-        String searchTargetPath = prop.getProperty("search.target.path", "");
-        OUTPUT_USED_PATH = prop.getProperty("output.used.path", "");
-        OUTPUT_UNUSED_PATH = prop.getProperty("output.unused.path", "");
-        SEARCH_TARGET_EXTENSION = Arrays.asList(prop.getProperty("search.target.extension", "").split(","));
+        Properties properties = new Properties();
+        try {
+            properties.load(java.nio.file.Files.newInputStream(Paths.get(PROP_FILE_NAME)));
+        } catch (IOException e) {
+            properties.load(UnusedProperties.class.getClassLoader().getResourceAsStream(PROP_FILE_NAME));
+        }
+
+        String keyPath = properties.getProperty("key.path", "");
+        String searchTargetPath = properties.getProperty("search.target.path", "");
+        OUTPUT_USED_PATH = properties.getProperty("output.used.path", "");
+        OUTPUT_UNUSED_PATH = properties.getProperty("output.unused.path", "");
+        SEARCH_TARGET_EXTENSION = Arrays.asList(properties.getProperty("search.target.extension", "").split(","));
 
 
         File keyFile = new File(keyPath);

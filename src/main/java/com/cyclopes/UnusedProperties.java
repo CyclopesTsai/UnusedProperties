@@ -61,14 +61,20 @@ public class UnusedProperties
         logger.info("");
 
         if(checkKeyFile) {
+            logger.info("generate keymap start ...");
             generateKeyMap(keyFile);
+            logger.info("generate keymap end");
 
             if(checkTargetFolder && !KEY_MAP.isEmpty()) {
+                logger.info("search start ...");
                 searchSubFile(targetFolder, 0);
+                logger.info("search end");
             }
 
             if(!USED_KEY_MAP.isEmpty()) {
+                logger.info("generate result start ...");
                 makeResultFile();
+                logger.info("generate result end");
             }
         }
     }
@@ -95,7 +101,9 @@ public class UnusedProperties
     private static void checkKeyInFile(File file) {
         String fileContent = getFileContent(file);
         for (Map.Entry<String, String> entry : KEY_MAP.entrySet()) {
-            if(fileContent.contains(entry.getKey())) {
+            String key1 = "\"" + entry.getKey() + "\"";
+            String key2 = "'" + entry.getKey() + "'";
+            if(fileContent.contains(key1) || fileContent.contains(key2)) {
                 logger.info("find key: {}", entry.getKey());
                 logger.info("file path: {}", file.getPath());
 
